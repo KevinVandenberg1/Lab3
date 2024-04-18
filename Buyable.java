@@ -3,8 +3,8 @@ public class Buyable extends Housing {
     private Boolean FOR_SALE;
     private String OWNER;
 
-    public Buyable(String address, int price, boolean forSale, String owner, 
-                int rooms, int bedrooms, int bathrooms, boolean studio, int capacity) {
+    public Buyable(String address, double price, boolean forSale, String owner, 
+                int rooms, double bedrooms, double bathrooms, boolean studio, int capacity) {
         super(address, rooms, bedrooms, bathrooms, studio, capacity);
         if (price < 0) {
             throw new ArithmeticException("Price isn't a valid input");

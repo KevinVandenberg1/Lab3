@@ -54,6 +54,9 @@ public class Rentable extends Housing{
     }
 
 
+    @Override
+    public String toString() {
 
-    public StringBuffer
+        return null;
+    }
 }
