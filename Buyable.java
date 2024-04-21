@@ -1,7 +1,7 @@
 public class Buyable extends Housing {
-    private double PRICE;
-    private Boolean FOR_SALE;
-    private String OWNER;
+    private double price;
+    private Boolean forSale;
+    private String owner;
 
     public Buyable(String address, double price, boolean forSale, String owner, 
                 int rooms, double bedrooms, double bathrooms, boolean studio, int capacity) {
@@ -9,23 +9,23 @@ public class Buyable extends Housing {
         if (price < 0) {
             throw new ArithmeticException("Price isn't a valid input");
         }
-        this.PRICE = price;
-        this.FOR_SALE = forSale;
+        this.price = price;
+        this.forSale = forSale;
         if (owner == null) {
-            this.OWNER = "None";
+            this.owner = "None";
         } else {
-            this.OWNER = owner;
+            this.owner = owner;
         }
     }
 
     public boolean saleStatus() {
-        return this.FOR_SALE;
+        return this.forSale;
     }
     public double getPrice() {
-        return this.PRICE;
+        return this.price;
     }
     public String getOwner() {
-        return this.OWNER;
+        return this.owner;
     }
 
 

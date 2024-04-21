@@ -1,10 +1,10 @@
 public class Rentable extends Housing{
-    private String LANDLORD_NAME;
-    private double BASE_RENT;
-    private double CREDIT_SCORE;
-    private double RELIABILITY_SCORE;
-    private String TENANT;
-    private boolean FOR_RENT;
+    private String landlord;
+    private double baseRent;
+    private double creditScore;
+    private double reliabilityScore;
+    private String tenant;
+    private boolean forRent;
 
     public Rentable(String landlord, double rent, double credit, String tenant, boolean rentStatus, String address, 
         int rooms, double bedrooms, double bathrooms, boolean hasStudio, int capacity) {
@@ -12,44 +12,44 @@ public class Rentable extends Housing{
         if (credit < 1) {
             throw new ArithmeticException("credit isn't a valid amount");
         }
-        this.LANDLORD_NAME = landlord;
-        this.BASE_RENT = rent;
-        this.CREDIT_SCORE = credit;
-        this.RELIABILITY_SCORE = credit;
-        this.TENANT = tenant;
-        this.FOR_RENT = rentStatus;
+        this.landlord = landlord;
+        this.baseRent = rent;
+        this.creditScore = credit;
+        this.reliabilityScore = credit;
+        this.tenant = tenant;
+        this.forRent = rentStatus;
     }
 
     public String getLandlord() {
-        return this.LANDLORD_NAME;
+        return this.landlord;
     }
     public double getRent() {
-        return this.BASE_RENT;
+        return this.baseRent;
     }
     public String getTenant() {
-        return TENANT;
+        return this.tenant;
     }
     public boolean rentStatus() {
-        return this.FOR_RENT;
+        return this.forRent;
     }
     public double getCredit() {
-        return this.CREDIT_SCORE;
+        return this.creditScore;
     }
     
 
 
     public void addInfraction() {
-        this.RELIABILITY_SCORE = this.RELIABILITY_SCORE + 1;
+        this.reliabilityScore = this.reliabilityScore + 1;
     }
     public void removeInfraction() {
-        if (RELIABILITY_SCORE >=2) {
-            this.RELIABILITY_SCORE = this.RELIABILITY_SCORE -1;
+        if (reliabilityScore >=2) {
+            this.reliabilityScore = this.reliabilityScore -1;
         } else {
-            this.RELIABILITY_SCORE = 1;
+            this.reliabilityScore = 1;
         }
     }
     public double calculatePrice() {
-        double price = this.BASE_RENT + ((RELIABILITY_SCORE -1) * 100);
+        double price = this.baseRent + ((reliabilityScore -1) * 100);
         return price;
     }
 
