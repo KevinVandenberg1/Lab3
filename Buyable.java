@@ -1,8 +1,10 @@
 public class Buyable extends Housing {
+    // Instance variables
     private double price;
     private Boolean forSale;
     private String owner;
 
+    // Constructor to setup the class in addition to the super class when this object is created
     public Buyable(String address, double price, boolean forSale, String owner, 
                 int rooms, double bedrooms, double bathrooms, boolean studio, int capacity) {
         super(address, rooms, bedrooms, bathrooms, studio, capacity);
@@ -17,18 +19,25 @@ public class Buyable extends Housing {
             this.owner = owner;
         }
     }
-
+    
+    // Getter method to get the status of whether or not its for sale
     public boolean saleStatus() {
         return this.forSale;
     }
+    
+    // Getter method to get the price of the place
     public double getPrice() {
         return this.price;
     }
+    
+    // Getter method to get the owner of the place
     public String getOwner() {
         return this.owner;
     }
 
 
+
+    // Method that converts all the information to a string
     @Override
     public String toString() {
         String address = "The address is " + getAddress();
@@ -44,6 +53,7 @@ public class Buyable extends Housing {
         String bathrooms = "Bathrooms: " + getBathrooms();
         String capacity = "Capacity: " + getCapacity() + " People";
 
+        // Returns everything as one string
         return String.format("%s%n %s%n %s%n %s%n %s%n %s%n %s%n %s%n", 
             address, status, price, rooms, bedrooms, bathrooms, owner, capacity);
     }

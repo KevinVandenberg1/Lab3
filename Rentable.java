@@ -1,4 +1,5 @@
 public class Rentable extends Housing{
+    // Instance Variables
     private String landlord;
     private double baseRent;
     private double creditScore;
@@ -6,6 +7,7 @@ public class Rentable extends Housing{
     private String tenant;
     private boolean forRent;
 
+    // Constructor to setup this object and the superclass
     public Rentable(String landlord, double rent, double credit, String tenant, boolean rentStatus, String address, 
         int rooms, double bedrooms, double bathrooms, boolean hasStudio, int capacity) {
         super(address, rooms, bedrooms, bathrooms, hasStudio, capacity);
@@ -20,27 +22,39 @@ public class Rentable extends Housing{
         this.forRent = rentStatus;
     }
 
+
+    // Getter method to get the Landlord of the property
     public String getLandlord() {
         return this.landlord;
     }
+    
+    // Getter method to get the rent of the property
     public double getRent() {
-        return this.baseRent;
+        double rent = calculatePrice();
+        return rent;
     }
+    // Gettter method to get the tenant of the property
     public String getTenant() {
         return this.tenant;
     }
+    
+    // getter method to get the rent status of the property
     public boolean rentStatus() {
         return this.forRent;
     }
+    
+    // Getter method to get the credit of the tenant
     public double getCredit() {
         return this.creditScore;
     }
     
 
-
+    // Method to add an infraction to the tenant
     public void addInfraction() {
         this.reliabilityScore = this.reliabilityScore + 1;
     }
+    
+    // Method to remove an infraction to the tenant
     public void removeInfraction() {
         if (reliabilityScore >=2) {
             this.reliabilityScore = this.reliabilityScore -1;
@@ -48,15 +62,34 @@ public class Rentable extends Housing{
             this.reliabilityScore = 1;
         }
     }
+    
+    // Method to calculate the new price for the tenant
     public double calculatePrice() {
         double price = this.baseRent + ((reliabilityScore -1) * 100);
         return price;
     }
 
-
+    // Method below formats everything to a single string and then returns it.
     @Override
     public String toString() {
+        String address = "The address is " + getAddress();
+        String status = "Status: For Rent";
+        String rent = "Rent: " + getRent();
+        String tenant = "Tenant: None";
+        String landlord = "The landlord is: " + getLandlord();
 
-        return null;
+        if (!rentStatus()) {  // Checks the status for the rent
+            status = "Status: Not for Rent";
+            tenant = "Tenant:" + getTenant();
+        }
+        String rooms = "Rooms: " + getRooms();
+        String bedrooms = "Bedrooms: " + getBedrooms();
+        String bathrooms = "Bathrooms: " + getBathrooms();
+        String capacity = "Capacity: " + getCapacity() + " People";
+
+
+        // Formats the strings to one string and then returns it
+        return String.format("%s%n %s%n %s%n %s%n %s%n %s%n %s%n %s%n %s%n", 
+            address, landlord, status, rent, rooms, bedrooms, bathrooms, tenant, capacity);
     }
 }
