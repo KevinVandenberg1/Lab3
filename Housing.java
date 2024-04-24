@@ -48,7 +48,6 @@ public class Housing {
         return this.capacity;
     }
 
-    // Creates a string that overrides the toString of the object class.
     @Override
     // Converts the information to a string
     public String toString() {
